@@ -46,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
         
     }
     else {
-        alert('Please chose between rock, paper and scissors'); 
+        alert('Please choose between rock, paper and scissors'); 
     }
   }
   function numberRound() {
@@ -66,7 +66,7 @@ function playRound(playerSelection, computerSelection) {
 
    function finalScore() {
        if (userScore > computerScore) {
-           alert('Congratuletions! You win');
+           alert('Congratulations! You win');
        }
        else if (userScore < computerScore){
            alert('Sorry, you lost'); 
@@ -80,7 +80,7 @@ function playRound(playerSelection, computerSelection) {
     for (let i = 0; i < 5; i++) {
         number++; 
         numberRound(); 
-        let playerSelection = prompt("Please chose between rock, paper and scissors: ")
+        let playerSelection = prompt("Please choose between rock, paper and scissors: ").toLowerCase();
         const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);    
      }

@@ -2,6 +2,7 @@
 let number=0; 
 let userScore= 0; 
 let computerScore= 0; 
+const computerSelection = computerPlay();
 
 function computerPlay() {
 let play = ['rock', 'paper', 'scissors'];
@@ -45,10 +46,8 @@ function playRound(playerSelection, computerSelection) {
         alert('It\'s a tie!'); 
         
     }
-    else {
-        alert('Please choose between rock, paper and scissors'); 
-    }
   }
+
   function numberRound() {
     alert("Game " + number); 
   }
@@ -63,31 +62,37 @@ function playRound(playerSelection, computerSelection) {
       console.log(computerScore); 
 
   }
-
-   function finalScore() {
+  
+    function finalScore() {
        if (userScore > computerScore) {
-           alert('Congratulations! You win');
+           alert('Congratulations! You win the game');
        }
        else if (userScore < computerScore){
-           alert('Sorry, you lost'); 
+           alert('Sorry, you lost the game'); 
        }
-       else if (userScore == computerScore){
+       else if (userScore === computerScore){
            alert('It\'s a tie')
        }
    }
-
-  function game() {
+   
+   /*function game() {
     for (let i = 0; i < 5; i++) {
-        number++; 
-        numberRound(); 
-        let playerSelection = prompt("Please choose between rock, paper and scissors: ").toLowerCase();
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);    
-     }
-  }
+           number++; 
+           numberRound(); 
+           playRound(playerSelection, computerSelection); 
+        }*/
 
-game();
-finalScore(); 
+    const rock = document.querySelector('#btnr'); 
+    rock.addEventListener('click', () => playRound('rock', computerSelection));
+    
+    const paper = document.querySelector('#btnp');
+    paper.addEventListener('click', () => playRound('paper', computerSelection)); 
+
+    const scissors = document.querySelector('#btns');
+    scissors.addEventListener('click', () => playRound('scissors', computerSelection));  
+
+
+//finalScore(); 
   
-
+//game(); 
   

@@ -1,15 +1,39 @@
 
-let number=0; 
 let userScore= 0; 
 let computerScore= 0; 
 let limit= 5; 
 let gameOver = false; 
 const results = document.createElement('div');
+const winner = document.createElement('div');
 const buttons = document.querySelectorAll('button');
+const restart = document.querySelector('#restart');
 
+document.querySelector('#restart').disabled = true; 
+document.querySelector('#btnr').disabled = false; 
+document.querySelector('#btnp').disabled = false; 
+document.querySelector('#btns').disabled = false; 
 let userDisplay = document.querySelector('#userScore');
 let computerDisplay = document.querySelector('#computerScore');
 
+
+restart.addEventListener('click', function() {
+   restartGame(); 
+});
+
+function restartGame (){
+    gameOver = false; 
+    userScore= 0; 
+    computerScore= 0; 
+    userDisplay.textContent = userScore; 
+    computerDisplay.textContent = computerScore; 
+    document.body.removeChild(results);
+    document.body.removeChild(winner); 
+    document.querySelector('#btnr').disabled = false; 
+    document.querySelector('#btnp').disabled = false; 
+    document.querySelector('#btns').disabled = false; 
+    document.querySelector('#restart').disabled = true; 
+    
+}
 
 function playGame () {
     buttons.forEach((button) => {
@@ -33,8 +57,11 @@ function playGame () {
     });   
 }
 
-function reset (){
-    
+function reset() {
+        document.querySelector('#btnr').disabled = true; 
+        document.querySelector('#btnp').disabled = true; 
+        document.querySelector('#btns').disabled = true; 
+        document.querySelector('#restart').disabled = false; 
 }
 
 
@@ -43,10 +70,11 @@ function addUserScore() {
         userScore ++; 
         userDisplay.textContent = userScore; 
         if (userScore === limit) {
-            let winner = document.createElement('p');
+            userDisplay.textContent = 5; 
             winner.textContent = 'Congratulations! You win the game';
             document.body.appendChild(winner); 
-            gameOver = true; 
+            gameOver = true;
+            reset();
         }
     }  
  }  
@@ -56,11 +84,11 @@ function addComputerScore() {
     if (!gameOver) {
         computerScore ++; 
         computerDisplay.textContent = computerScore; 
-        if (computerScore === limit) {
-            let loser = document.createElement('p');
-            loser.textContent = 'Sorry! You lost the game';
-            document.body.appendChild(loser); 
+        if (computerScore == limit) {
+            winner.textContent = 'Sorry! You lost the game';
+            document.body.appendChild(winner); 
             gameOver = true; 
+            reset();
         }
     }
 }   
@@ -117,8 +145,6 @@ function playRound(playerSelection, computerSelection) {
     }
     
   }
-
-
 
 
   playGame(); 

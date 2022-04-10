@@ -4,7 +4,11 @@ let computerScore= 0;
 let limit= 5; 
 let gameOver = false; 
 const results = document.createElement('div');
+results.classList.add('results'); 
+
 const winner = document.createElement('div');
+winner.classList.add('winner');
+
 const buttons = document.querySelectorAll('button');
 const restart = document.querySelector('#restart');
 
@@ -12,6 +16,7 @@ document.querySelector('#restart').disabled = true;
 document.querySelector('#btnr').disabled = false; 
 document.querySelector('#btnp').disabled = false; 
 document.querySelector('#btns').disabled = false; 
+
 let userDisplay = document.querySelector('#userScore');
 let computerDisplay = document.querySelector('#computerScore');
 
@@ -95,8 +100,8 @@ function addComputerScore() {
 
 
 function computerPlay() {
-let play = ['rock', 'paper', 'scissors'];
-return play[Math.floor(Math.random()*play.length)]; 
+    let play = ['rock', 'paper', 'scissors'];
+    return play[Math.floor(Math.random()*play.length)]; 
 }
 
 function playRound(playerSelection, computerSelection) {
